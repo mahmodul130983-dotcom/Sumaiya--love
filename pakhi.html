@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sumaiya 💖</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ffe4ec,#e6f0ff);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* PHONE STYLE */
+.phone{
+width:360px;
+height:720px;
+background:white;
+border-radius:35px;
+overflow:hidden;
+box-shadow:0 20px 50px rgba(0,0,0,0.3);
+position:relative;
+}
+
+/* LOCK SCREEN */
+.lock{
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,#ffb6c1,#a0c4ff);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:white;
+z-index:10;
+}
+
+.lock input{
+padding:12px;
+border:none;
+border-radius:10px;
+margin-top:15px;
+text-align:center;
+font-size:18px;
+}
+
+.lock button{
+margin-top:10px;
+padding:10px 20px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+background:white;
+font-weight:bold;
+}
+
+/* NAV */
+nav{
+display:flex;
+justify-content:space-around;
+padding:10px;
+background:#fff;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+nav button{
+border:none;
+background:#ffe4ec;
+padding:8px 10px;
+border-radius:15px;
+font-size:12px;
+cursor:pointer;
+}
+
+/* PAGES */
+.page{
+display:none;
+padding:15px;
+height:calc(100% - 50px);
+overflow-y:auto;
+text-align:center;
+}
+
+.page.active{
+display:block;
+}
+
+h2{
+color:#333;
+margin-bottom:10px;
+}
+
+/* CARDS */
+.cards{
+display:flex;
+flex-direction:column;
+gap:15px;
+margin-top:10px;
+}
+
+.card{
+height:140px;
+perspective:1000px;
+cursor:pointer;
+}
+
+.inner{
+width:100%;
+height:100%;
+position:relative;
+transform-style:preserve-3d;
+transition:0.8s;
+}
+
+.card.flipped .inner{
+transform:rotateY(180deg);
+}
+
+.front,.back{
+position:absolute;
+width:100%;
+height:100%;
+border-radius:15px;
+backface-visibility:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.front{
+background:#fff0f5;
+flex-direction:column;
+}
+
+.back{
+background:#f0f8ff;
+transform:rotateY(180deg);
+font-size:14px;
+}
+
+/* TEXT */
+.big{
+font-size:14px;
+line-height:1.6;
+background:#fff;
+padding:10px;
+border-radius:10px;
+box-shadow:0 5px 10px rgba(0,0,0,0.1);
+}
+
+/* HIDDEN */
+.hidden{
+display:none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ROMANTIC SONG -->
+<iframe id="song" width="0" height="0"
+src="https://www.youtube.com/embed/2Vv-BfVoq4g?enablejsapi=1"
+allow="autoplay"></iframe>
+
+<!-- PHONE -->
+<div class="phone">
+
+<!-- LOCK -->
+<div class="lock" id="lock">
+<h2>💖 Welcome Sumaiya</h2>
+<p>Enter Password to Open</p>
+<input type="password" id="pass" placeholder="Enter code">
+<button onclick="check()">Unlock</button>
+</div>
+
+<!-- NAV -->
+<nav>
+<button onclick="show(1)">Home</button>
+<button onclick="show(2)">Why</button>
+<button onclick="show(3)">Feelings</button>
+<button onclick="show(4)">Future</button>
+</nav>
+
+<!-- PAGE 1 -->
+<div class="page active" id="p1">
+<h2>Three Things About You 💖 Sumaiya</h2>
+
+<div class="cards">
+
+<div class="card" onclick="flip(this)">
+<div class="inner">
+<div class="front">🌸 You Care</div>
+<div class="back">You always show love even in small things.</div>
+</div>
+</div>
+
+<div class="card" onclick="flip(this)">
+<div class="inner">
+<div class="front">✨ You Shine</div>
+<div class="back">Your presence makes everything better.</div>
+</div>
+</div>
+
+<div class="card" onclick="flip(this)">
+<div class="inner">
+<div class="front">💜 You Are Special</div>
+<div class="back">Sumaiya, you are irreplaceable in my life.</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="p2">
+<h2>Why I Love You 💖</h2>
+<div class="big">
+Sumaiya, you are the peace I never knew I needed.<br><br>
+You turn normal days into memories.<br><br>
+Even silence feels beautiful when it's with you.
+</div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="p3">
+<h2>My Feelings 💭</h2>
+<div class="big">
+I don’t say it every day, but I feel it every second.<br><br>
+You are my comfort, my smile, my thought before sleep.<br><br>
+Sumaiya, you became my habit without me noticing.
+</div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="p4">
+<h2>Future 💫</h2>
+<div class="big">
+I don’t know everything about tomorrow.<br><br>
+But I know one thing—I want you in it, always.<br><br>
+With you, everything feels possible.
+</div>
+</div>
+
+</div>
+
+<script>
+
+function check(){
+let pass = document.getElementById("pass").value;
+if(pass == "168"){
+document.getElementById("lock").style.display="none";
+}
+else{
+alert("Wrong Password ❌");
+}
+}
+
+function flip(card){
+card.classList.toggle("flipped");
+}
+
+function show(n){
+for(let i=1;i<=4;i++){
+document.getElementById("p"+i).classList.remove("active");
+}
+document.getElementById("p"+n).classList.add("active");
+}
+
+</script>
+
+</body>
+</html>
